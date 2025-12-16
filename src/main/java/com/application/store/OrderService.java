@@ -2,6 +2,7 @@ package com.application.store;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -11,7 +12,7 @@ public class OrderService {
     private PaymentService paymentService;
 
     @Autowired
-    public OrderService(@Qualifier("paypal") PaymentService paymentService){
+    public OrderService(@Qualifier("stripe") PaymentService paymentService){
         this.paymentService = paymentService;
     }
 
