@@ -1,12 +1,15 @@
 package com.application.store;
 
 public class OrderService {
+    private PaymentService paymentService;
+
+    public OrderService(PaymentService paymentService){
+        this.paymentService = paymentService;
+    }
     public void placeOrder(){
 
-        // here OrderService is tightly couped with StripePaymentService()
-        // cannot test OrderService in isolation
-        // changing to a different provider (i.e. PayPal) -> changing OrderService class
-        var paymentService = new StripePaymentService();
+        // use instance of PaymentService to placeOrder
+        // we didn't have to modify OrderService to use different service providers
         paymentService.processPayment(10.0);
     }
 }

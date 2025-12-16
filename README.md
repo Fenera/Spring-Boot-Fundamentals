@@ -19,3 +19,11 @@ public void placeOrder(){
     }
 }
 
+Using Dependency Injection: 
+
+Use Open-Closed Principle:
+Create the interface by:
+Go to class you want to implement the interface
+Refactor -> Extract/Introduce -> Interface -> Select methods for interface to define
+Pass 
+

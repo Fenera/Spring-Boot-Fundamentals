@@ -1,9 +1,10 @@
 package com.application.store;
 
-public class StripePaymentService implements PaymentService {
+public class PayPalPaymentService implements PaymentService{
+
     @Override
     public void processPayment(double amount){
-        System.out.println("STRIPE");
+        System.out.println("PayPal: ");
         System.out.println("Amount: " + amount);
     }
 }
