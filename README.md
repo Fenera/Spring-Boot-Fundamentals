@@ -50,3 +50,11 @@ Go to the class that creates the object (OrderService) and annotate it with @Com
 
 You should place the @Autowired annotation on the single constructor you want Spring to use for dependency injection (for single constructor classes, no need to use @Autowired)
 If you have optional variables, use setter injection instead of multiple constructors
+
+If you have multiple instances of an interface/abstract class (Stripe & PayPal),
+control the bean selection by using @Primary and @Qualifier
+In the example code, paypal is the payment service used for OrderService while Stripe is the general payment service for everything else
+
+@Qualifier and Dependency Injection
+The core idea of loose coupling in software design is that a component should depend on an abstraction (like an interface) rather than a concrete implementation.
+Loose Coupling (via Interface): The component that uses the dependency (the client) doesn't create the dependency itself or manage its lifecycle. Instead, the framework (like Spring) injects the dependency at runtime (Inversion of Control). The client interacts with the dependency through an interface, making it agnostic to the underlying concrete class.
