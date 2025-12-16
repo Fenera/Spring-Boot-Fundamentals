@@ -19,7 +19,7 @@ public void placeOrder(){
     }
 }
 
-Using Dependency Injection: 
+Using Constructor Injection: 
 
 Use Open-Closed Principle:
 Create the interface by:
@@ -27,3 +27,7 @@ Go to class you want to implement the interface
 Refactor -> Extract/Introduce -> Interface -> Select methods for interface to define
 Pass 
 
+Using Setter Injection:
+Similar to Constructor Injection -> just with a setter
+Use only for optional dependencies (The OrderService should work without the setter injection)
+Injecting PaymentService into a setter is not recommended
