@@ -14,6 +14,8 @@ public class StoreApplication {
         // retrieves a specific bean instance (object) from IoC container based on the name
         // get object managed by Spring
         var orderService = context.getBean(OrderService.class);
+        // singleton scope
+        var orderService2 = context.getBean(OrderService.class);
         orderService.placeOrder();
     }
 
