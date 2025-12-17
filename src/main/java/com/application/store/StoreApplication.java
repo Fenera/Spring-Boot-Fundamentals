@@ -21,5 +21,4 @@ public class StoreApplication {
 
         context.close();
     }
-
 }
