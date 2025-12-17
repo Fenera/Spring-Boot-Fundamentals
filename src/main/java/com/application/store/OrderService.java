@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 public class OrderService {
     private PaymentService paymentService;
 
-    @Autowired
     public OrderService(PaymentService paymentService){
         this.paymentService = paymentService;
+        System.out.println("Order Service created");
     }
 
     public OrderService(){}
