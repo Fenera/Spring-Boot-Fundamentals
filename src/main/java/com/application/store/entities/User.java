@@ -45,6 +45,10 @@ public class User {
     @Builder.Default // builder design pattern ignores this initialization at runtime
     private Set<Tag> tags = new HashSet<>();
 
+
+    @OneToOne(mappedBy = "user") // user is the user object in the Profile class
+    private Profile profile;
+
     public void addAddress(Address address){
         addresses.add(address);
         address.setUser(this);
@@ -63,5 +67,10 @@ public class User {
     public void removeTag(Tag tag){
         tags.remove(tag);
         tag.setUsers(null);
+    }
+
+    public void addProfile(Profile profile){
+        this.profile = profile;
+        profile.setUser(this);
     }
 }

@@ -2,6 +2,7 @@ package com.application.store;
 
 import com.application.store.entities.Address;
 import com.application.store.entities.User;
+import com.application.store.entities.Profile;
 import com.application.store.entities.Tag;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,8 +27,15 @@ public class StoreApplication {
                 .build();
 
 
-        user.addTag("tag1");
+        var profile = Profile.builder()
+                        .id(1L)
+                        .bio("bio")
+                        .phoneNumber("phone number")
+                        .dateOfBirth("date of birth")
+                        .loyalty_points(1)
+                        .build();
 
+        user.setProfile(profile);
 
         System.out.println(user);
 

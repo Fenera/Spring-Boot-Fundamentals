@@ -2,11 +2,10 @@ package com.application.store.entities;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+@ToString
+@Builder
 @Setter
 @Getter
 @AllArgsConstructor
@@ -25,5 +24,11 @@ public class Profile {
     private String dateOfBirth;
     @Column(name = "loyalty_points")
     private Integer loyalty_points;
+
+    @OneToOne
+    @JoinColumn(name = "id") // profile knows about user but user doesn't know about profile (so owner)
+    @MapsId // use id as both pk and fk
+    @ToString.Exclude
+    private User user;
 
 }
