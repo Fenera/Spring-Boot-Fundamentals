@@ -1,15 +1,14 @@
 package com.application.store.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+@Builder
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Entity
 @Table(name = "addresses")
 public class Address {
@@ -25,5 +24,11 @@ public class Address {
     private String zip;
     @Column(name = "state")
     private String state;
+
+    // many addresses belong to one user
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @ToString.Exclude
+    private User user;
 
 }

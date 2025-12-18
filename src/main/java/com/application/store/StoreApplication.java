@@ -1,6 +1,8 @@
 package com.application.store;
 
+import com.application.store.entities.Address;
 import com.application.store.entities.User;
+import com.application.store.entities.Tag;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -16,6 +18,18 @@ public class StoreApplication {
 //
 //
 //        context.close();
+
+        var user = User.builder()
+                .name("John")
+                .password("password")
+                .email("email")
+                .build();
+
+
+        user.addTag("tag1");
+
+
+        System.out.println(user);
 
     }
 }
