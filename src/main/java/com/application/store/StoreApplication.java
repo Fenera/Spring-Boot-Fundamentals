@@ -1,14 +1,13 @@
 package com.application.store;
 
-import com.application.store.entities.Address;
-import com.application.store.entities.User;
-import com.application.store.entities.Profile;
-import com.application.store.entities.Tag;
+import com.application.store.entities.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.annotation.Order;
+
+import java.math.BigDecimal;
 
 @SpringBootApplication
 public class StoreApplication {
@@ -20,24 +19,13 @@ public class StoreApplication {
 //
 //        context.close();
 
-        var user = User.builder()
-                .name("John")
-                .password("password")
-                .email("email")
+        Category category = Category.builder()
+                .id((byte) 1)
+                .name("Bottled Water")
                 .build();
 
+        category.addProduct("Aquafina", new BigDecimal(1.09));
 
-        var profile = Profile.builder()
-                        .id(1L)
-                        .bio("bio")
-                        .phoneNumber("phone number")
-                        .dateOfBirth("date of birth")
-                        .loyalty_points(1)
-                        .build();
-
-        user.setProfile(profile);
-
-        System.out.println(user);
-
+        System.out.println(category);
     }
 }
