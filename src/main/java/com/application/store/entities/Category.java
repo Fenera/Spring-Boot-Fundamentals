@@ -1,35 +1,26 @@
 package com.application.store.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
-import org.springframework.context.annotation.Primary;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.math.BigDecimal;
 import java.util.HashSet;
-import java.util.List;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
-@Builder
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
 @Entity
+@Table(name = "categories", schema = "store")
 public class Category {
     @Id
+    @Column(name = "id")
     private Byte id;
 
-    @Column
+    @Column(name = "name")
     private String name;
 
     @OneToMany(mappedBy = "category")
-    @Builder.Default
     private Set<Product> products = new HashSet<>();
 
-    public void addProduct(String productName, BigDecimal price){
-        var product = new Product(productName, price);
-        products.add(product);
-        product.setCategory(this);
-    }
 }

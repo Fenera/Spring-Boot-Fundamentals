@@ -49,6 +49,15 @@ public class User {
     @OneToOne(mappedBy = "user") // user is the user object in the Profile class
     private Profile profile;
 
+
+    @ManyToMany
+    @JoinTable(name="wishlist",
+    joinColumns= @JoinColumn(name = "user_id"),
+    inverseJoinColumns = @JoinColumn(name="product_id"))
+
+    private Set<Product> wishList = new HashSet<>();
+
+
     public void addAddress(Address address){
         addresses.add(address);
         address.setUser(this);

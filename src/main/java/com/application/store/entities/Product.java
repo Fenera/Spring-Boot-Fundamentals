@@ -1,32 +1,36 @@
 package com.application.store.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
-
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.Set;
 
-@Entity
 @Getter
 @Setter
-@ToString
-@NoArgsConstructor
+@Entity
+@Table(name = "products", schema = "store")
 public class Product {
     @Id
+    @Column(name = "id")
     private Long id;
-    @Column
+
+    @Column(name = "name")
     private String name;
-    @Column
+
+    @Column(name = "description", columnDefinition = "TEXT",
+    nullable = false)
+    private String description;
+
+    @Column(name = "price", precision = 10, scale = 2)
     private BigDecimal price;
 
-    public Product(String name, BigDecimal price){
-        this.name = name;
-        this.price = price;
-    }
+    @ManyToMany
+    private Set<User> users;
 
-    @ManyToOne
-    // product is the owner of the relationship
+    @ManyToOne()
     @JoinColumn(name = "category_id")
-    @ToString.Exclude
     private Category category;
+
 }

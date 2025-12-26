@@ -19,13 +19,6 @@ public class StoreApplication {
 //
 //        context.close();
 
-        Category category = Category.builder()
-                .id((byte) 1)
-                .name("Bottled Water")
-                .build();
 
-        category.addProduct("Aquafina", new BigDecimal(1.09));
-
-        System.out.println(category);
     }
 }
